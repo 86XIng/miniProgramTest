@@ -1,0 +1,25 @@
+.btn {
+  width: 50px;
+  height: 50px;
+  border: 0 solid #fff;
+  border-radius: 50px;
+  box-shadow: 4px 1px 1px #ccc;
+  background-color: #fc0;
+}
+
+.swiper-image{
+width: 100%;
+height: 200px;
+}
+.Order_Food_Butten{
+  margin: 50px;
+  width: 80%;
+background-color: rgb(220,61,37);
+}
+.butten_group{
+  display: flex;
+}
+.find{
+  width:80%;
+  text-align: left;
+}

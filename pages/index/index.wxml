@@ -1,0 +1,20 @@
+
+<view class='swiper-style'>
+ <swiper indicator-dots="true" autoplay="true" circular="true"  duration="500" interval="2000"  >
+  <block wx:for="{{images}}" wx:key="*this">
+          <swiper-item>
+          <image src="{{item.url}}" class="swiper-image swiper-item {{item}}" mode="scaleToFill"/>  
+          </swiper-item>
+  </block>
+ </swiper>
+</view>
+<view class='butten_group' style="height: 300px;flex-direction:column;">
+<navigator url="../OrderFood/OrderFood">
+<button bindtap=' Order_Food' class='Order_Food_Butten'>开始点餐</button>
+</navigator>
+
+ <button class="find">查看最近优惠活动</button>
+ <button  class="find">查看我的订单</button>
+ </view>
+
+

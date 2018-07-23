@@ -1,0 +1,42 @@
+<view class='swiper-style'>
+  <swiper indicator-dots="true" autoplay="true" circular="true" duration="500" interval="2000">
+    <block wx:for="{{images}}" wx:key="*this">
+      <swiper-item>
+        <image src="{{item.url}}" class="swiper-image swiper-item {{item}}" mode="scaleToFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="box">
+  <scroll-view class='left ' scroll-y='true' style='height:440px'>
+    <view wx:for="{{foodList}}" wx:key="*this">
+      <view bindtap='changeIndex' class="{{isActive?'active':'notActive'}} left_item" data-item='{{item.id}}' data-index='{{index}}'>{{item.name}}</view>
+    </view>
+  </scroll-view>
+  <view class=" right">
+    <block wx:for="{{food}}">
+    <block wx:if="{{item.id==this_foodList}}">
+    <block wx:for="{{item.content}}">
+      <view class="right_items">
+        <view class='right_left'>
+          <image src='{{item.url}}' class="image" mode="scaleToFill"></image>
+        </view>
+        <view class="right_right">
+          <view class="right_right_name">
+            <text id="foodname">{{item.name}}</text>
+          </view>
+          <view class="right_right_money">
+            <text>{{item.money}}￥</text>
+          </view>
+            <view  class="right_right_choice">
+              <button data-index='{{index}}' class="button" bindtap='SUB' type="primary">-</button>
+              <input data-index='{{index}}' class="input" value='{{item.count}}' bindinput='inputAmount'/>
+              <button data-index='{{index}}' class="button" bindtap='ADD' type="primary">+</button>
+            </view>          
+        </view>
+      </view>
+      </block>
+      </block>
+    </block>
+  </view>
+</view>

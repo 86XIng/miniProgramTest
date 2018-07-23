@@ -1,0 +1,15 @@
+{
+  "pages": [
+    
+      "pages/OrderFood/OrderFood",
+   "pages/index/index",
+    "pages/logs/logs"
+  
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "自助点餐",
+    "navigationBarTextStyle": "black"
+  }
+}
