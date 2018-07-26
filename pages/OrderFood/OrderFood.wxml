@@ -1,21 +1,33 @@
-<view class='swiper-style'>
+<view class='main'>
+  <view class='swiper-style'>
   <swiper indicator-dots="true" autoplay="true" circular="true" duration="500" interval="2000">
-    <block wx:for="{{images}}" wx:key="*this">
+    <block wx:for="{{images}}">
       <swiper-item>
-        <image src="{{item.url}}" class="swiper-image swiper-item {{item}}" mode="scaleToFill" />
+        <image src="{{item.url}}" class="swiper-image {{item}}" mode="scaleToFill"/>
       </swiper-item>
     </block>
   </swiper>
 </view>
 <view class="box">
-  <scroll-view class='left ' scroll-y='true' style='height:440px'>
-    <view wx:for="{{foodList}}" wx:key="*this">
-      <view bindtap='changeIndex' class="{{isActive?'active':'notActive'}} left_item" data-item='{{item.id}}' data-index='{{index}}'>{{item.name}}</view>
+  <scroll-view class='left ' scroll-y='true'>
+    <view wx:for="{{foodList}}">
+      <view bindtap='changeIndex' class="{{item.isActive?'active':'notActive'}} left_item" data-item='{{item.id}}' data-index='{{index}}'>{{item.name}}</view>
+      
+      <!-- <block wx:for="{{food}}">
+        <block wx:if="{{item.id==this_foodList}}"> 
+          <block wx:for="{{item.content}}">
+            <view class="icon" wx:if="{{item.count!=0}}">
+              <view class="count">{{item.count}}</view>
+            </view>
+          </block> 
+        </block>
+        </block> -->
+      
     </view>
   </scroll-view>
-  <view class=" right">
+  <scroll-view class='right ' scroll-y='true'>
     <block wx:for="{{food}}">
-    <block wx:if="{{item.id==this_foodList}}">
+    <block wx:if="{{item.id==this_foodList}}"> 
     <block wx:for="{{item.content}}">
       <view class="right_items">
         <view class='right_left'>
@@ -26,17 +38,48 @@
             <text id="foodname">{{item.name}}</text>
           </view>
           <view class="right_right_money">
-            <text>{{item.money}}￥</text>
+            <text>￥{{item.money}}</text>
           </view>
             <view  class="right_right_choice">
-              <button data-index='{{index}}' class="button" bindtap='SUB' type="primary">-</button>
-              <input data-index='{{index}}' class="input" value='{{item.count}}' bindinput='inputAmount'/>
-              <button data-index='{{index}}' class="button" bindtap='ADD' type="primary">+</button>
+              <button size='mini' data-id='{{item.foodId}}' class="button" bindtap='SUB' type="primary">－</button>
+              <text data-id='{{item.foodId}}' class="input" >{{item.count}}</text>
+              <button size='mini' data-id='{{item.foodId}}' class="button" bindtap='ADD' type="primary">＋</button>
             </view>          
         </view>
       </view>
-      </block>
+       </block> 
       </block>
     </block>
+  </scroll-view>
+</view>
+
+<view class="cart-detail" hidden="{{!showCartDetail||!cart.count}}">
+    <view class="mask" bindtap="hideCartDetail"></view>
+    <view class="list">
+      <block wx:for="{{food}}">
+         <view class="item" wx:for="{{item.content}}" wx:if="{{item.count!=0&&item.id!='hot'}}">
+            <view class="name ellipsis">{{item.name}}</view>
+            <view class="total">￥{{item.count*item.money}}</view>
+            <view class="reduce" data-id="{{item.foodId}}" bindtap="SUB">-</view>
+            <view class="num">{{item.count}}</view>
+            <view class="add" data-id="{{item.foodId}}" bindtap="ADD">+</view>
+        </view>
+      </block>
+    </view>
+  </view> 
+
+<view class="cart">
+    <view class="data" bindtap="showCartDetail">
+      <view class="icon">
+        <image src='../../image/shop/cart.png'></image>
+        <view class="count">{{cart.count}}</view>
+      </view>
+      <view class="total">￥{{cart.total}}</view>
+    </view>
+    <form bindsubmit="submit" report-submit="true">
+      <!--<view formType="submit" class="submit">去结算</view>-->
+      <button class="yellow {{cart.count?'':'disabled'}}" formType="submit" disabled="{{!cart.count}}">去结算</button>
+    </form>
   </view>
+
 </view>

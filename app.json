@@ -1,10 +1,9 @@
 {
   "pages": [
-    
-      "pages/OrderFood/OrderFood",
-   "pages/index/index",
-    "pages/logs/logs"
-  
+    "pages/OrderFood/OrderFood",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/balance/balance"
   ],
   "window": {
     "backgroundTextStyle": "light",

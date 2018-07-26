@@ -1,0 +1,18 @@
+/* pages/balance/balance.wxss */
+.container {
+  width: 80%;
+}
+.list {
+  display: flex;
+  flex-direction: row;
+}
+.name {
+  width: 100%;
+}
+.num {
+  width: 100%;
+}
+.total {
+  width: 100%;
+  text-align: end;
+}

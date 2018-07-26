@@ -1,44 +1,60 @@
 /* pages/day04/index.wxss */
-.box{
-  display: flex;
-  position: relative; 
-  margin-top: 20px;
+.main {
+  background: #f2f2f2;
+  box-sizing: border-box; 
+}
+.swiper-style {
+  box-sizing: border-box;
+   width: 100%; 
+  position: fixed;
+  top: 0;
 }
 .swiper-image{
-width: 100%;
-height: 200px;
-}
-.left_item{ 
-  height: 200rpx;
-  text-align: center;
-  line-height: 200rpx;
+  width: 100%;
 }
 .left{  
-  width: 20%;
-  height: 100px;
+  position: fixed; 
+  left: 0;
+  bottom: 100rpx;
+  width: 200rpx;
+  height: 800rpx;
   text-align: center;
-  display: inline-block;
-  background-color: rgb(245,245,245);
+  background: #f2f2f2;
+}
+.left_item{ 
+  transition: all 0.3s linear 0;
+  text-align: center;
+  line-height: 160rpx;
+  border-radius: 5px;
 }
 .active {
-  background-color: green;
+  text-align: center;
+  line-height: 160rpx;
+  background-color: #3ffe0f;
+  transition: all 0.3s linear 0;
 }
-.notActive{
 
-}
+
+
+
+
+
+
+
 .right{  
-  width:80%;
-   top: 0;
-  right: 0;
-  flex: 1;
-  position: absolute;
+  position: fixed; 
+  right: 10px;
+  bottom: 100rpx;
+  width:530rpx;
+  height: 800rpx;
 }
-
 .right_items{
-  width: 95%;
-  float: left;
-    display: flex;
-
+  display: flex;
+  align-content:flex-end;
+  box-shadow: 5px 2px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px; 
+  background: white;
+  border-radius: 5px;
 }
 ::-webkit-scrollbar{
 width: 0;
@@ -46,21 +62,10 @@ height: 0;
 color: transparent;
 }
 
-.right_left{
-  justify-content: flex-start;
-  
-}
-.right_items{
-  /* position: absolute; 
-  right: 0px;   */
-  justify-content: flex-end;
-}
-.right_right {
- justify-content: flex-end;
-}
 .right_right_name{
 margin-top: 30rpx;
-font-size: 20px;
+font-size: 15px;
+font-weight: bold;
 }
 #foodname{
   text-align: right;
@@ -72,33 +77,134 @@ font-size: 20px;
 }
 .right_right_choice{
   margin-top: 30px; 
-   display: flex;
+  display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-end; 
 }
-/* .add{  
-    border:2px solid green; 
-   border-radius: 100px;
-         width: 30px;
-     text-align: center;
-}
-.sub{
-  border:2px solid green; 
- border-radius: 100px;
-         width: 30px;
-     text-align: center;
-} */
+
 .image{
   margin: 5px;
   width: 120px;
   height: 140px;
 }
-.button{
-  border-radius: 50%; 
-  width: 40px;
-  line-height: 40px;
+.yellow {
+  background-color: #3ffe0f;    
   }
 .input{
   text-align: center;
+  
   width:40px;
+}
+.cart-detail, .cart-detail .mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cart-detail .mask {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.cart-detail .list {
+  position: absolute;
+  left: 0;
+  bottom: 100rpx;
+  width: 100%;
+  background: #f7f7f7;
+  padding: 30rpx 0;
+}
+
+.cart-detail .list .item {
+  display: -webkit-flex;
+  color: #333;
+  font-size: 36rpx;
+  line-height: 50rpx;
+  padding: 20rpx 40rpx;
+}
+
+.cart-detail .list .item .name {
+   flex: 1;
+}
+
+.cart-detail .list .item .total {
+  width: 120rpx;
+}
+
+.cart-detail .list .item .reduce, .cart-detail .list .item .add {
+  font-size: 50rpx;
+  background: #feb70f;
+  width: 50rpx;
+  height: 50rpx;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.cart-detail .list .item .num {
+  width: 50rpx;
+  text-align: center;
+  margin: 0 5rpx;
+}
+.cart{
+    display: -webkit-flex;
+      left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+
+}
+.cart .data {
+  -webkit-flex: 1;
+  /*border-top: 1rpx solid #e7e7e7;*/
+}
+.cart .data .icon {
+  position: absolute;
+  left: 40rpx;
+  top: -20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: #3ffe0f;
+  border-radius: 50%;
+}
+
+.cart .data .icon image {
+  position: absolute;
+  left: 15rpx;
+  top: 15rpx;
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.cart .data .icon .count {
+  position: absolute;
+  left: 70rpx;
+  top: -10rpx;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  padding: 0 12rpx;
+  color: #fff;
+  background: #f45044;
+  border-radius: 20rpx;
+}
+
+.cart .data .total {
+  color: #f45044;
+  font-size: 36rpx;
+  line-height: 100rpx;
+  padding-left: 160rpx;
+}
+
+.cart button {
+  margin-top: 10rpx;
+  margin-right: 20rpx;
+  width: 200rpx;
+  height: 80%;
+  font-size: 36rpx;
+}
+.name {
+  padding-top: 20rpx;
+  font-size: 36rpx;
+  line-height: 60rpx;
 }
